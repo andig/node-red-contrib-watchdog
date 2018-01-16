@@ -1,0 +1,83 @@
+<script type="text/x-red" data-template-name="watchdog">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tag"></i> Output Topic</label>
+        <input style="width:70%" type="text" id="node-input-topic" placeholder="topic">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outhealthy"><i class="fa fa-tag"></i> Healthy payload</label>
+        <input style="width:70%" type="text" id="node-input-outhealthy" placeholder="healthy">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outwarning"><i class="fa fa-tag"></i> Warning payload</label>
+        <input style="width:70%" type="text" id="node-input-outwarning" placeholder="warning">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-outerror"><i class="fa fa-tag"></i> Error payload</label>
+        <input style="width:70%" type="text" id="node-input-outerror" placeholder="error">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-warning"><i class="fa fa-clock-o"></i> Warning (secs)</label>
+        <input style="width:15%" type="text" id="node-input-warning" placeholder="5">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-timer"><i class="fa fa-clock-o"></i> Countdown (secs)</label>
+        <input style="width:15%" type="text" id="node-input-timer" placeholder="30">
+    </div>
+
+    <div>
+        <span style="width: 350px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-restart" placeholder="restart" > Auto-restart when timed out</span>
+        <br/><br/>
+    </div>	
+
+    <div>
+        <span style="width: 350px; float: left; margin-left: 5px;"><input type="checkbox" id="node-input-repeat" placeholder="repeat" > Repeat message every second</span>
+        <br/><br/>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="watchdog">
+    <h3>Watchdog</h3>
+    <p>A simple watchdog node based on `nodered-contrib-timeout` by Peter Scargill (pete@scargill.org).</p>
+    <p>On start it sends out the SAFE message - then nothing as long as it is 
+	kept topped up by input. If the counter counts down to the warning level it outputs the WARNING message.
+	If it times out - the UNSAFE message is sent out. Can also be used as a simply output toggle.</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('watchdog', {
+        category: 'advanced-input',
+        color: "#ff66cc",
+        inputs: 1,
+        inputLabels: "trigger",
+        outputs: 1,
+        outputLabels: ["output"],
+        defaults: {
+		    name: { value: "watchdog" },
+            timer: { value: "60" },
+            warning: { value: "30" },
+			topic: {value: "" },
+			outhealthy: { value: "Healthy" },
+			outwarning: { value: "Warning" },
+			outerror: { value: "Error" },
+			repeat: { value: false },
+			restart: { value: false }
+        },
+        icon: "timer.png",
+        label: function() {
+            return this.name||"watchdog";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>

@@ -1,0 +1,30 @@
+{
+  "author": {
+    "email": "pete@scargill.org",
+    "name": "Peter Scargill",
+    "url": "https://tech.scargill.net"
+  },
+  "dependencies": {},
+  "description": "A simple watchdog node",
+  "devDependencies": {},
+  "homepage": "https://github.com/andig/nodered-contrib-watchdog",
+  "keywords": [
+    "node-red",
+    "watchdog",
+    "timeout"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "cpuidle@gmx.de",
+      "name": "andig"
+    }
+  ],
+  "name": "node-red-contrib-watchdog",
+  "node-red": {
+    "nodes": {
+      "watchdog": "watchdog.js"
+    }
+  },
+  "version": "1.0.0"
+}
