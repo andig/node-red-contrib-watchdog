@@ -70,7 +70,7 @@ module.exports = function (RED) {
 				node.status({
 					fill: "yellow",
 					shape: "dot",
-					text: "Warning: " + countdown,
+					text: "Warning: " + countdown + "s",
 				});
 				
 				countdown--;
@@ -88,7 +88,7 @@ module.exports = function (RED) {
 				node.status({
 					fill: "green",
 					shape: "dot",
-					text: "Countdown: " + countdown,
+					text: "Countdown: " + countdown + "s",
 				});
 
 				countdown--;
